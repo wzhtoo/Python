@@ -20,10 +20,11 @@ while len(guessed_states) < 50:
     print(answer_state)
 
     if answer_state == "Exit":
-        missing_states = []
-        for state in all_states:
-            if state not in guessed_states:
-                missing_states.append(state)
+        missing_states = [state for state in all_states if state not in guessed_states]
+        # missing_states = []
+        # for state in all_states:
+        #     if state not in guessed_states:
+        #         missing_states.append(state)
         new_data = pandas.DataFrame(missing_states)
         new_data.to_csv("State_to_learn.csv")
         break
@@ -39,4 +40,3 @@ while len(guessed_states) < 50:
         # Create a turtle to write the name os the state at the state's x and y coordinate
         # t.write(state_data.state.item())
         t.write(answer_state)
-
